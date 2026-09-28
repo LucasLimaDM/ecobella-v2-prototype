@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>Ecobella · Protótipo v2</title>
+  <script>
+    try {
+      const saved = localStorage.getItem('ecobella-v2-theme');
+      document.documentElement.dataset.theme = saved === 'light' || saved === 'dark'
+        ? saved : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    } catch {
+      document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    document.querySelector('meta[name="theme-color"]').content =
+      document.documentElement.dataset.theme === 'dark' ? '#121820' : '#ffffff';
+  </script>
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Pular para o conteúdo</a>
+  <div class="brand-line eco-ribbon"></div>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar" aria-label="Navegação principal">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">E</span><div><strong>Ecobella</strong><small>Haras</small></div></div>
+      <div class="nav-caption">VISÃO GERAL</div>
+      <nav id="nav"></nav>
+      <div class="side-bottom"><div class="avatar">DE</div><div><strong>Conta de demonstração</strong><small>Perfil Dono · dados fictícios</small></div></div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar"><button class="icon-btn menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button><div class="breadcrumb" id="breadcrumb"></div><div class="top-actions"><span class="demo-label">Protótipo v2 · dados fictícios</span><button class="icon-btn" id="theme-toggle" type="button" aria-label="Ativar tema escuro" title="Ativar tema escuro">☾</button><button class="icon-btn" id="help" aria-label="Sobre este protótipo" title="Sobre este protótipo">?</button></div></header>
+      <main id="main" tabindex="-1"></main>
+    </div>
+  </div>
+  <dialog id="detail-dialog" class="dialog"><div id="dialog-content"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
