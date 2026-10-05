@@ -130,6 +130,10 @@
 #report-totals{grid-template-columns:repeat(3,minmax(0,1fr))}#report-totals .label,#report-totals .number{display:block}#report-totals .number{overflow-wrap:anywhere}@media(max-width:760px){#report-totals{grid-template-columns:1fr}}
 
 /* Payments: one client and lesson, with secondary fields disclosed on demand. */
+.attendance-toggle{display:flex;gap:5px;flex-wrap:nowrap}
+.attendance-toggle [aria-pressed="true"][data-attendance-choice="present"]{background:var(--ok-bg);color:var(--ok-fg);border-color:var(--ok-fg)}
+.attendance-toggle [aria-pressed="true"][data-attendance-choice="absent"]{background:var(--crit-bg);color:var(--crit-fg);border-color:var(--crit-fg)}
+.attendance-toggle [aria-pressed="true"]{font-weight:800;box-shadow:inset 0 0 0 1px currentColor}
 .payment-picker{position:relative;min-width:0;flex:1}
 .payment-picker summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:8px 11px;border:1px solid var(--line-strong);border-radius:7px;background:var(--surface);color:var(--ink);cursor:pointer}
 .payment-picker summary::-webkit-details-marker{display:none}
