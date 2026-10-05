@@ -128,3 +128,52 @@
 
 .report-hub{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.report-card{text-decoration:none;color:inherit}.report-card h2{margin:0 0 8px}.report-pagination{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px;flex-wrap:wrap}.report-pagination .control-row{flex-wrap:wrap}@media(max-width:1050px){.report-hub{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:760px){.report-hub{grid-template-columns:1fr}}
 #report-totals{grid-template-columns:repeat(3,minmax(0,1fr))}#report-totals .label,#report-totals .number{display:block}#report-totals .number{overflow-wrap:anywhere}@media(max-width:760px){#report-totals{grid-template-columns:1fr}}
+
+/* Payments: one client and lesson, with secondary fields disclosed on demand. */
+.payment-picker{position:relative;min-width:0;flex:1}
+.payment-picker summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:8px 11px;border:1px solid var(--line-strong);border-radius:7px;background:var(--surface);color:var(--ink);cursor:pointer}
+.payment-picker summary::-webkit-details-marker{display:none}
+.payment-picker summary>span:first-child{display:grid;gap:3px;min-width:0}
+.payment-picker-value{font-size:13px;font-weight:600;overflow-wrap:anywhere}
+.payment-picker summary[aria-disabled="true"]{opacity:.55;cursor:default}
+.payment-picker[open]>summary{border-color:var(--eco-blue-500)}
+.payment-picker-menu{position:absolute;top:calc(100% + 5px);left:0;min-width:min(280px,100%);width:100%;max-height:270px;overflow:auto;z-index:45;padding:6px;border:1px solid var(--line-strong);border-radius:8px;background:var(--surface);color:var(--ink);box-shadow:var(--shadow-lg)}
+.payment-picker-menu>.input{width:100%;margin-bottom:5px}
+.payment-picker-menu>button{display:flex;justify-content:space-between;gap:12px;width:100%;border:0;border-radius:5px;background:transparent;color:inherit;text-align:left;padding:10px;min-height:40px;font-size:13px;overflow-wrap:anywhere}
+.payment-picker-menu>button[aria-pressed="true"]{background:var(--info-bg);color:var(--info-fg);font-weight:650}
+.payment-picker-menu>button:hover,.payment-picker-menu>button:focus-visible{background:var(--surface-2);outline:2px solid var(--eco-blue-500);outline-offset:-2px}
+.payment-picker-empty{padding:10px}
+.payment-main-fields{gap:14px}
+.payment-main-fields>.full{grid-column:1/-1}
+.payment-balance-summary{color:var(--ink-3);font-size:12px;margin:0;line-height:1.5}
+.payment-balance-summary:empty{display:none}
+.payment-other-payer{margin:16px 0 10px;font-size:13px}
+#payment-payer-field{margin-bottom:16px}
+.payment-receipt-section{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.payment-receipt-section h3{font-size:14px;margin:0 0 12px}
+.payment-receipt-section .subtle{font-size:11px}
+.payment-receipt-section input{max-width:100%;font-size:12px}
+#receipt-status{font-size:12px;color:var(--ink-3);margin:8px 0}
+.payment-more{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}
+.payment-more>summary{cursor:pointer;color:var(--ink-2);font-size:13px;font-weight:600}
+.payment-more .form-grid{margin:14px 0}
+.payment-save-actions{position:sticky;bottom:-18px;background:var(--surface);padding:14px 0;margin-bottom:-18px;border-top:1px solid var(--line);z-index:5}
+.payment-fields:disabled .payment-picker>summary{pointer-events:none;opacity:.5}
+.payment-metrics{display:flex;gap:48px;padding:4px 0 24px;flex-wrap:wrap}
+.payment-metrics>div{display:grid;gap:5px}
+.payment-metrics .label{font-size:12px;color:var(--ink-3)}
+.payment-metrics strong{font-size:25px;letter-spacing:-.5px}
+.payment-metrics .subtle{font-size:11px}
+.payments-toolbar{align-items:stretch;gap:10px}
+.payments-toolbar>.search{min-width:170px;max-width:none;flex:1 1 180px}
+.payment-filter-fields{display:flex;gap:8px;align-items:stretch;flex:4 1 700px;min-width:0}
+.payment-filter-fields .payment-picker{flex:1 1 140px}
+.payment-filter-fields .payment-picker-value{font-size:12px}
+.payment-date{flex:0 0 126px;min-width:0;gap:3px;font-size:10px;color:var(--ink-3)}
+.payment-date input{width:100%;font-size:11px;min-height:30px;padding:5px}
+.payments-toolbar>.payment-filter-toggle{display:none}
+.payments-panel .data-table{min-width:950px}
+.payments-panel td:nth-child(4){white-space:nowrap}
+@media(min-width:1201px){.payment-filter-fields[hidden]{display:flex!important}}
+@media(max-width:1200px){.payments-toolbar>.search{width:auto;min-width:0;flex:1}.payments-toolbar>.payment-filter-toggle{display:inline-flex}.payment-filter-fields{flex-basis:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.payment-filter-fields>.text-link{justify-self:start}.payment-date{width:100%}}
+@media(max-width:760px){.payment-metrics{gap:20px;padding-bottom:18px}.payment-metrics strong{font-size:22px}.payment-main-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.payment-picker-value{font-size:12px}.payment-filter-fields .payment-picker{grid-column:1/-1}.payment-save-actions>.primary{flex:1}}
